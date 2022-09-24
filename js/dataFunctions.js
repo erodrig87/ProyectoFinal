@@ -25,18 +25,10 @@ const readFormInput = () => {
         updateChart();
 
     } else { 
-       /*nodoform = document.getElementById("inputExpenseForm");
-        nodo = document.createElement("div");
-        nodo.id = "alertMsg";
-        nodo.classList = "alert alert-warning"; nodo.style.visibility = "visible";
-        nodo.innerHTML = "Los datos ingresados no son validos";
-        nodoform.appendChild(nodo);
-        */
         Swal.fire({
             icon: 'error',
             title: 'Datos no validos',
             text: 'Ingresar Fecha, Categoria y valor gasto en forma correcta',
-            //footer: '<a href="">Why do I have this issue?</a>'
           })
     }
 }
@@ -145,19 +137,13 @@ function makeFilterCategory(_array){
 
 }
 
-
-
 function filterDate(_array,filterDate){
-
     let filteredArray = _array.filter((element, index, array) => array[index].fecha == filterDate);
-
     return filteredArray;  
 }
 
 function filterCategory(_array,filterCategory){
-
     let filteredArray = _array.filter((element, index, array) => array[index].categoria == filterCategory);
-
     return filteredArray;  
 }
 
@@ -196,9 +182,8 @@ function showMaxMin() {
     let min = minGasto();
     let max = maxGasto();
 
-    nodoform = document.getElementById("detailedExpenses");
+    nodoform = document.getElementById("sidebarMenu");
     nodo = document.createElement("div");
-    
     nodo.id = "min";
     nodo.classList = "alert alert-info"; nodo.style.visibility = "visible";
     nodo.innerHTML = `Valor minimo = ${min} || Valor Maximo = ${max}`;

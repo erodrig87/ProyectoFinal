@@ -20,11 +20,9 @@ class Gasto {
         row.parentNode.removeChild(row);
     }
     storeExpense() {
-        // Parse any JSON previously stored in allEntries
+
         let arrExpensesStored = JSON.parse(localStorage.getItem("arrExpensesStored"));
         if(arrExpensesStored == null) arrExpensesStored = [];
-       //localStorage.setItem(this.ID, JSON.stringify(this));
-        // Save allEntries back to local storage
         arrExpensesStored.push(this);
         localStorage.setItem("arrExpensesStored", JSON.stringify(arrExpensesStored));
         localStorage.setItem("ID_GASTO_GLOBAL", JSON.stringify(ID_GASTO_GLOBAL));

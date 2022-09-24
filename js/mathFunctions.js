@@ -33,8 +33,6 @@ const sumExpenses = (_array) => {
     return total_sum;
 }
 
-
-
 //devuelve array de sumas x categoria
 function sumExpensesByCategory(){
 

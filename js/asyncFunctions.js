@@ -8,7 +8,7 @@ const getDolarValues = async () => {
     localStorage.setItem("dolar_blue_buy_value", JSON.stringify(data.blue.value_buy));
 
 
-    nodoform = document.getElementById("detailedExpenses");
+    nodoform = document.getElementById("sidebarMenu");
     nodo = document.createElement("div");
     
     nodo.id = "min";

@@ -14,9 +14,7 @@ function randomColor() {
     return arrColors;
 }
 
-
-
-/* globals Chart:false, feather:false */
+//funcion actualiza graficos
 
 (updateChart = () => {
   'use strict'
@@ -83,44 +81,6 @@ function randomColor() {
       }
     }
   })
-/*
-  const ctx2 = document.getElementById('myChart2')
-  const myChart2 = new Chart(ctx2, {
-    type: 'pie',
-    data: {
-      //eje x
-      labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-      ],
-      // eje y
-      datasets: [{
-        // data ejemplo -> futuro se remplazara con sumatoria de gastos por dia 
-        data: [300, 50, 100],
-      //  lineTension: 0,
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      }],
-      hoverOffset: 4
-    },
-    options: {
-      scales: {
-      /*  yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
-  })*/
-
 
   const ctx3 = document.getElementById('myChart3')
   const myChart3 = new Chart(ctx3, {
