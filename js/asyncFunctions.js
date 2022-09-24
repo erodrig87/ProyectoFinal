@@ -23,18 +23,14 @@ const getExpensesData = () => {
     fetch('../data.json')
     .then((resp)=> resp.json()
     .then ((data) => {
-        arrExpensesStored = data;
-        console.log(arrExpensesStored);
-        updateArrayExpenseTable(arrExpensesStored);
+        arrExpensesServerStored = data;
+        console.log(arrExpensesServerStored);
+        updateArrayExpenseTable(arrExpensesServerStored);
         updateChart();
         showMaxMin();
 
-    })
-        //console.log(resp);
-        //console.log(arrExpenses);        
+    })    
     ) 
-    //return expensesData;
-    //console.log(data.blue.value_buy);
 }
 
 

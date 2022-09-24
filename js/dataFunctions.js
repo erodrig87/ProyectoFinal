@@ -63,15 +63,18 @@ function addRowTable(objeto){
     }
 }
 //funcion lee gastos almacenados y actualiza tabla y array de gastos
-function updateArrayExpenseTable(){
 
-    arrExpensesStored.forEach(function(expenseStored) {
-        let nuevoGasto = new Gasto(expenseStored.fecha, expenseStored.categoria, expenseStored.valor,expenseStored.remito,expenseStored.pago,expenseStored.ID.replace(/\D/g,''));
+function updateArrayExpenseTable(_arr){
+
+    _arr.forEach(function(_arr) {
+        let nuevoGasto = new Gasto(_arr.fecha, _arr.categoria, _arr.valor,_arr.remito,_arr.pago,_arr.ID.replace(/\D/g,''));
+        nuevoGasto.enDolares = _arr.enDolares;
         arrExpenses.push(nuevoGasto);
         addRowTable(nuevoGasto);
      })
      makeFilterCategory(arrExpenses);    
 }
+
 // funcion que devuelve el Array de Gastos filtrado segun categoria
 
 /*const filtrarCategoria = (categoriaFiltrada) => {
