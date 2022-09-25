@@ -23,7 +23,9 @@ const readFormInput = () => {
         addRowTable(nuevoGasto);
         makeFilterCategory(arrExpenses);
         if(document.getElementById("alertMsg"))document.getElementById("alertMsg").remove();
+        fechaChart = maxDate();
         updateChart(fechaChart);
+        showMaxMin();
 
     } else { 
         Swal.fire({
@@ -73,17 +75,12 @@ function updateArrayExpenseTable(_arr){
         arrExpenses.push(nuevoGasto);
         addRowTable(nuevoGasto);
      })
-     makeFilterCategory(arrExpenses);    
+     makeFilterCategory(arrExpenses);  
+     fechaChart = maxDate();  
 }
 
 // funcion que devuelve el Array de Gastos filtrado segun categoria
 
-/*const filtrarCategoria = (categoriaFiltrada) => {
-    let arrayFiltrado = arrExpenses.filter(function (gasto) {
-        return gasto.categoria == categoriaFiltrada;
-      });
-      return arrayFiltrado;
-}*/
 //funcion inicializa app
 const resetExpense = (dias) => {
     
@@ -139,12 +136,12 @@ function makeFilterCategory(_array){
       return newArray;
 
 }
-
+// devuelve array filtrado segun fecha
 function filterDate(_array,filterDate){
     let filteredArray = _array.filter((element, index, array) => array[index].fecha == filterDate);
     return filteredArray;  
 }
-
+// devuelve array filtrado segun categoria
 function filterCategory(_array,filterCategory){
     let filteredArray = _array.filter((element, index, array) => array[index].categoria == filterCategory);
     return filteredArray;  
@@ -171,7 +168,7 @@ function categoryFilterChecked(filterSelected){
    
 }
 
-//habilita visibilidad de fila segun filtro categoria
+//deshabilita visibilidad de fila segun filtro categoria
 function categoryFilterNotChecked(filterSelected){
     arrExpenses.forEach((objeto) =>{
         if(objeto.categoria==filterSelected){
@@ -179,16 +176,31 @@ function categoryFilterNotChecked(filterSelected){
         }
     })    
 }
-
+//visualiza maximo y minimos de gastos
 function showMaxMin() {
 
     let min = minGasto();
     let max = maxGasto();
 
     nodoform = document.getElementById("sidebarMenu");
-    nodo = document.createElement("div");
-    nodo.id = "min";
-    nodo.classList = "alert alert-info"; nodo.style.visibility = "visible";
-    nodo.innerHTML = `Valor minimo = ${min} || Valor Maximo = ${max}`;
-    nodoform.appendChild(nodo);
+    nodo = document.getElementById("min_max");
+    if(nodo) {
+        nodo.innerHTML = `Valor minimo = ${min} || Valor Maximo = ${max}`;
+    }else{
+        nodo = document.createElement("div");
+        nodo.id = "min_max";
+        nodo.classList = "alert alert-info"; nodo.style.visibility = "visible";
+        nodo.innerHTML = `Valor minimo = ${min} || Valor Maximo = ${max}`;
+        nodoform.appendChild(nodo);
+    }
+
 }
+
+const maxDate = () => {
+    const fechas = arrExpenses.map((object) => object.fecha);
+    let mFecha = fechas.reduce(function (a, b) { return a > b ? a : b; });
+    const [day, month, year] = mFecha.split('/');
+    const date = new Date(+year, +month - 1, +day);
+    return date;
+}
+

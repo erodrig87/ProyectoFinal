@@ -28,28 +28,8 @@ const getExpensesData = () => {
         updateArrayExpenseTable(arrExpensesServerStored);
         updateChart(fechaChart);
         showMaxMin();
-
     })    
     ) 
 }
-const backwardDashboardDate = () => {
-
-    updateChart(fechaChart.setDate(fechaChart.getDate() - 7));
-    
-}
-
-const forwardDashboardDate = () => {
-
-    updateChart(fechaChart.setDate(fechaChart.getDate() + 7));
-    
-}
-
-const thisWeek = () => {
-
-    fechaChart = new Date();
-    updateChart(fechaChart);
-    
-}
-
 
 

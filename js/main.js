@@ -13,9 +13,9 @@ let arrExpensesServerStored =[];
 let arrExpenses = [];
 let selectedFecha;
 let selectedValue;
-lablesChart = [];
-dataChart = [];
-fechaChart = new Date();
+let lablesChart = [];
+let dataChart = [];
+
 
 getExpensesData(); // Se cargan gastos de data.json utilizando funcion fetch
 
