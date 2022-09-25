@@ -1,22 +1,24 @@
-
+// actualiza grafico a 7 dias atras
 const backwardDashboardDate = () => {
 
   updateChart(fechaChart.setDate(fechaChart.getDate() - 7));
   
 }
-
+// actualiza grafico a 7 dias adelante
 const forwardDashboardDate = () => {
 
   updateChart(fechaChart.setDate(fechaChart.getDate() + 7));
   
 }
 
+// actualiza grafico hasta dia actual
 const thisWeek = () => {
 
   fechaChart = new Date();
   updateChart(fechaChart); 
 }
 
+// actualiza etiquetas grafico barra
 function setLabels(fecha){
   fFecha= new Date(fecha);
   lablesChart = [];
@@ -26,7 +28,7 @@ function setLabels(fecha){
   }
   return lablesChart.reverse();
 }
-
+// actualiza data y grafico de barras
 function setData(){
   dataChart=[];
   lablesChart.forEach(element => {
@@ -36,6 +38,7 @@ function setData(){
   return dataChart;
 
 }
+// genera colores aleatorios grafico torta
 function randomColor() {
 
     let arrColors =[];
@@ -43,102 +46,17 @@ function randomColor() {
     for( let i = 0; i<uniqueCategories;i++)arrColors.push("#" + ((1<<10)*Math.random() | 0).toString(16));
     return arrColors;
 }
-
-//funcion actualiza graficos
-
-/*
-
-const updateChart = () => {
-
-  myChart.labels = setLabels(fechaChart);
-  myChart.data = setData(fechaChart);
-  myChart.update();
-  myChart2.labels = makeFilterCategory(arrExpenses);
-  myChart2.data = sumExpensesByCategory();
-  myChart2.data.backgroundColor = randomColor();
- myChart2.update();
- 
-
-}
-
-
-//'use strict'
-
-//feather.replace({ 'aria-hidden': 'true' })
-
-// Grafico que visualiza gastos por dia en ultima semana
-const ctx = document.getElementById('myChart')
-
-// eslint-disable-next-line no-unused-vars
-const myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    //eje x
-    labels: setLabels(fechaChart),
-    // eje y
-    datasets: [{
-      data: setData(),
-      lineTension: 0,
-      backgroundColor: '#007bff',
-      borderColor: '#007bff',
-      borderWidth: 4,
-      pointBackgroundColor: '#007bff'
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: false
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'Valor de Gasto'
-        }
-      }],
-      xAxes: [{
-        scaleLabel: {
-          display: true,
-          labelString: 'Fecha'
-        }
-      }]
-    },
-    
-    legend: {
-      display: false
-    }
-  }
-})
-
-const ctx3 = document.getElementById('myChart3')
-const myChart2 = new Chart(ctx3, {
-  type: 'pie',
-  data: {
-    //eje x
-    labels: makeFilterCategory(arrExpenses), //funcion que retorna array de categorias
-    // eje y
-    datasets: [{
-      
-      data: sumExpensesByCategory(),//funcion que retorna array de suma x categoria
-    //  lineTension: 0,
-    backgroundColor: randomColor(),
-    }],
-    hoverOffset: 4
-  },
-  options: {
-    scales: {
-    },
-    legend: {
-      display: false
-    }
-  }
-})*/
+// actualiza graficos
 
 const updateChart = (fechaChart) => {
   'use strict'
 
+  //busca elemento barChart
   let barChart = document.getElementById("barChart");
+  //borra contenido
   barChart.innerHTML='';
+
+  //crea canvas y elemento barChartElements para grafico
   let barCanvas = document.createElement("canvas");
   barCanvas.setAttribute("style", "width:400px");
   barCanvas.setAttribute("style", "height:400px");
@@ -154,10 +72,11 @@ const updateChart = (fechaChart) => {
 
   //feather.replace({ 'aria-hidden': 'true' })
 
-  
   const ctxBar = document.getElementById('barChartElements');
 
   // eslint-disable-next-line no-unused-vars
+
+  // crea objeto Chart ubicado en barChartElements
   const myChart = new Chart(ctxBar, {
     type: 'bar',
     data: {
@@ -198,11 +117,15 @@ const updateChart = (fechaChart) => {
     }
   })
 
+  //busca elemento pieChart
   let pieChart = document.getElementById("pieChart");
+  //borra contenido
   pieChart.innerHTML='';
+
+  //crea canvas y elemento barChartElements para grafico
   let pieCanvas = document.createElement("canvas");
   pieCanvas.setAttribute("style", "width:200px");
-  pieCanvas.setAttribute("style", "height:100px");
+  pieCanvas.setAttribute("style", "height:200px");
   pieCanvas.setAttribute("class","my-4 w-100");
   pieCanvas.setAttribute("id","pieChartElements");
   let pieTitle = document.createElement("p");
@@ -213,6 +136,8 @@ const updateChart = (fechaChart) => {
 
 
   const ctxPie = document.getElementById("pieChartElements")
+ 
+  // crea objeto Chart ubicado en pieChartElements
   const myPieChart = new Chart(ctxPie, {
     type: 'pie',
     data: {
