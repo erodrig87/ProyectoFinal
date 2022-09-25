@@ -26,6 +26,7 @@ const getExpensesData = () => {
         arrExpensesServerStored = data;
         console.log(arrExpensesServerStored);
         updateArrayExpenseTable(arrExpensesServerStored);
+        arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored);
         updateChart(fechaChart);
         showMaxMin();
     })    

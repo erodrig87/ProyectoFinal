@@ -1,11 +1,8 @@
+# ProyectoFinal - App registro de gastos
 
-# Fetch-Desafio
-
-- Se cargan valores de gastos desde archivo data.json utilizando fetch
-
-- Se crea funcion asincronica que consulta API para obtener valores de dolar blue
-
-- Al ingresar nuevos gastos, se calcula su valor en dolares utilizando valor dolar blue de compra
-
-- Los nuevos gastos ingresados no se almacenan en data.json (se agregara funcionalidad usando node.js)
-# ProyectoFinal
+- Se carga gastos almacenados en archivo data.json utilizando funcion fetch (simulando interaccion con Server)
+- se consulta API de bluelytics.com.ar para obtener valor de dolar blue
+- Se cargan gastos almacenados en forma local
+- Al ingresar gastos los graficos son actualizados
+- Es posible visualizar gastos por semana en grafico de barras
+- Reset gastos, inicializa gastos almacenados en forma local

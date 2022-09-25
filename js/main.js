@@ -19,7 +19,7 @@ let dataChart = [];
 
 getExpensesData(); // Se cargan gastos de data.json utilizando funcion fetch
 
-arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored); // actuliza con gastos almacenados localmente
+//arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored); // actuliza con gastos almacenados localmente
 
 //(createRandomExpenses == "true") ? randomExpenses():false; // si no hay gastos ingresados, genera 9 aleatorios.
 
