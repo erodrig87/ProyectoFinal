@@ -26,11 +26,30 @@ const getExpensesData = () => {
         arrExpensesServerStored = data;
         console.log(arrExpensesServerStored);
         updateArrayExpenseTable(arrExpensesServerStored);
-        updateChart();
+        updateChart(fechaChart);
         showMaxMin();
 
     })    
     ) 
 }
+const backwardDashboardDate = () => {
+
+    updateChart(fechaChart.setDate(fechaChart.getDate() - 7));
+    
+}
+
+const forwardDashboardDate = () => {
+
+    updateChart(fechaChart.setDate(fechaChart.getDate() + 7));
+    
+}
+
+const thisWeek = () => {
+
+    fechaChart = new Date();
+    updateChart(fechaChart);
+    
+}
+
 
 

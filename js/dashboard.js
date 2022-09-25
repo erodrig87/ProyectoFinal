@@ -1,11 +1,24 @@
 
-//funcion que devuelve fecha actual - x dias pasados como parametro utilizada en dashboard.js para modificar eje x del grafico
-function restarDias(dias) {
-  fecha = new Date();
-  fecha.setDate(fecha.getDate() - dias);
-  return fecha;
+
+function setLabels(fecha){
+  fFecha= new Date(fecha);
+  lablesChart = [];
+  for(let i = 0; i <7 ; i++){
+      lablesChart.push(fFecha.toLocaleDateString());
+      fFecha.setDate(fFecha.getDate() - 1);
+  }
+  return lablesChart.reverse();
 }
 
+function setData(){
+  dataChart=[];
+  lablesChart.forEach(element => {
+      dataChart.push(sumExpenses(filterDate(arrExpenses,element)));
+      
+  });
+  return dataChart;
+
+}
 function randomColor() {
 
     let arrColors =[];
@@ -16,7 +29,7 @@ function randomColor() {
 
 //funcion actualiza graficos
 
-(updateChart = () => {
+(updateChart = (fechaChart) => {
   'use strict'
 
   feather.replace({ 'aria-hidden': 'true' })
@@ -29,7 +42,7 @@ function randomColor() {
     type: 'bar',
     data: {
       //eje x
-      labels: [
+      labels: setLabels(fechaChart) /*[
         restarDias(6).toLocaleDateString(), //funcion que devuelve fecha actual - x dias pasados com parametro
         restarDias(5).toLocaleDateString(),
         restarDias(4).toLocaleDateString(),
@@ -37,11 +50,11 @@ function randomColor() {
         restarDias(2).toLocaleDateString(),
         restarDias(1).toLocaleDateString(),
         restarDias(0).toLocaleDateString(),
-      ],
+      ]*/,
       // eje y
       datasets: [{
         // data ejemplo -> futuro se remplazara con sumatoria de gastos por dia 
-        data: [
+        data: setData()/*[
           sumExpenses(filterDate(arrExpenses,restarDias(6).toLocaleDateString())),
           sumExpenses(filterDate(arrExpenses,restarDias(5).toLocaleDateString())),
           sumExpenses(filterDate(arrExpenses,restarDias(4).toLocaleDateString())),
@@ -49,7 +62,7 @@ function randomColor() {
           sumExpenses(filterDate(arrExpenses,restarDias(2).toLocaleDateString())),
           sumExpenses(filterDate(arrExpenses,restarDias(1).toLocaleDateString())),
           sumExpenses(filterDate(arrExpenses,restarDias(0).toLocaleDateString())),
-        ],
+        ]*/,
         lineTension: 0,
         backgroundColor: '#007bff',
         borderColor: '#007bff',

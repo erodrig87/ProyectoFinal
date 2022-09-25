@@ -1,4 +1,5 @@
 
+
 //crea un objeto gasto tomando los parametros ingresados en el form
 const readFormInput = () => {
     
@@ -22,7 +23,7 @@ const readFormInput = () => {
         addRowTable(nuevoGasto);
         makeFilterCategory(arrExpenses);
         if(document.getElementById("alertMsg"))document.getElementById("alertMsg").remove();
-        updateChart();
+        updateChart(fechaChart);
 
     } else { 
         Swal.fire({
@@ -107,7 +108,6 @@ function makeFilterCategory(_array){
     
     let categoryDropDownFilter = document.getElementById("categoryFilter");
     categoryDropDownFilter.innerHTML="";
-      // creo nodo linea
     
     newArray.forEach((element) => {
         

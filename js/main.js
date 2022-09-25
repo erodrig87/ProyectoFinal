@@ -13,6 +13,9 @@ let arrExpensesServerStored =[];
 let arrExpenses = [];
 let selectedFecha;
 let selectedValue;
+lablesChart = [];
+dataChart = [];
+fechaChart = new Date();
 
 getExpensesData(); // Se cargan gastos de data.json utilizando funcion fetch
 
@@ -22,6 +25,8 @@ arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored); // act
 
 getDolarValues();
 
+  
+  
 
 
 
