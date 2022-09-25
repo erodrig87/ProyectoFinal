@@ -26,11 +26,17 @@ const getExpensesData = () => {
         arrExpensesServerStored = data;
         console.log(arrExpensesServerStored);
         updateArrayExpenseTable(arrExpensesServerStored);
-        arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored);
+        arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored); // actualiza con gastos almacenados localmente
         updateChart(fechaChart);
         showMaxMin();
     })    
-    ) 
+    )
+    .catch(error => {
+        console.log(`error ${error}`);
+        arrExpensesStored.length>0 && updateArrayExpenseTable(arrExpensesStored); // actualiza con gastos almacenados localmente
+        updateChart(fechaChart);
+        showMaxMin();
+    }) 
 }
 
 
