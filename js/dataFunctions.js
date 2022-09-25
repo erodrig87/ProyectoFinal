@@ -198,9 +198,13 @@ function showMaxMin() {
 
 const maxDate = () => {
     const fechas = arrExpenses.map((object) => object.fecha);
-    let mFecha = fechas.reduce(function (a, b) { return a > b ? a : b; });
-    const [day, month, year] = mFecha.split('/');
-    const date = new Date(+year, +month - 1, +day);
-    return date;
+    let newArrayFechas =[];
+    fechas.forEach(element =>  {
+        const [day, month, year] = element.split('/');
+        const date = new Date(+year, +month - 1, +day);
+        newArrayFechas.push(date);
+    })
+    return newArrayFechas.reduce(function (a, b) { return a > b ? a : b; });
+
 }
 
